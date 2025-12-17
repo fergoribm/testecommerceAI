@@ -1,47 +1,73 @@
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
 const app = express();
 
-// Configurazione Porta (fondamentale per Code Engine)
 const PORT = process.env.PORT || 8080;
 
-// Middleware
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+
+// Configurazione Sessione (Fondamentale per il carrello)
 app.use(session({
-    secret: 'secret-key-eshop',
+    secret: 'it-shop-secret',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false } // Imposta a true se usi HTTPS su Code Engine
 }));
 
-// Database Mock (In produzione usa MongoDB o Cloudant)
+// Catalogo Oggetti IT
 const products = [
-    { id: 1, name: "Smartphone X", price: 699, img: "https://via.placeholder.com/150" },
-    { id: 2, name: "Laptop Pro", price: 1299, img: "https://via.placeholder.com/150" },
-    { id: 3, name: "Cuffie Wireless", price: 199, img: "https://via.placeholder.com/150" }
+    { 
+        id: 1, 
+        name: "Monitor Gaming 27\" 4K", 
+        price: 450.00, 
+        img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+        desc: "Pannello IPS, 144Hz, tempo di risposta 1ms."
+    },
+    { 
+        id: 2, 
+        name: "Tastiera Meccanica RGB", 
+        price: 120.00, 
+        img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=500",
+        desc: "Switch Cherry MX Red, layout italiano."
+    },
+    { 
+        id: 3, 
+        name: "MacBook Pro M2", 
+        price: 1899.00, 
+        img: "https://images.unsplash.com/photo-1517336714460-457228377a7e?w=500",
+        desc: "16GB RAM, 512GB SSD, display Liquid Retina."
+    },
+    { 
+        id: 4, 
+        name: "Mouse Wireless Ergonomico", 
+        price: 85.00, 
+        img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500",
+        desc: "Sensore 16000 DPI, batteria a lunga durata."
+    },
+    { 
+        id: 5, 
+        name: "SSD Esterno 2TB", 
+        price: 160.00, 
+        img: "https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?w=500",
+        desc: "Velocità di trasferimento fino a 1050 MB/s."
+    }
 ];
 
-// --- ROTTE ---
-
-// Home Page: Lista Prodotti
 app.get('/', (req, res) => {
-    res.render('index', { products, cartCount: req.session.cart ? req.session.cart.length : 0 });
+    const cart = req.session.cart || [];
+    res.render('index', { products, cartCount: cart.length });
 });
 
-// Aggiunta al Carrello
 app.post('/add-to-cart', (req, res) => {
     const productId = parseInt(req.body.productId);
     const product = products.find(p => p.id === productId);
-    
     if (!req.session.cart) req.session.cart = [];
     req.session.cart.push(product);
-    
     res.redirect('/');
 });
 
-// Checkout
 app.get('/checkout', (req, res) => {
     const cart = req.session.cart || [];
     const total = cart.reduce((sum, item) => sum + item.price, 0);
@@ -49,5 +75,5 @@ app.get('/checkout', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`E-commerce online sulla porta ${PORT}`);
+    console.log(`Server IT Shop attivo su porta ${PORT}`);
 });
