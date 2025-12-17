@@ -37,7 +37,7 @@ const products = [
         name: "Notebook Extraslim IBM Z17", 
         price: 1899.00, 
         //img: "https://images.unsplash.com/photo-1517336714460-457228377a7e?w=500",
-        img: "https://unsplash.com/photos/futuristic-server-room-lit-with-blue-lights-CuZ8VdwRpyk",
+        img: "https://unsplash.com/photos/futuristic-server-room-lit-with-blue-lights-CuZ8VdwRpyk?w=500",
         desc: "16TB RAM, 512TB SSD, display: Un led blu."
     },
     { 
