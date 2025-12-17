@@ -34,10 +34,11 @@ const products = [
     },
     { 
         id: 3, 
-        name: "MacBook Pro M2", 
+        name: "Notebook Extraslim IBM Z17", 
         price: 1899.00, 
-        img: "https://images.unsplash.com/photo-1517336714460-457228377a7e?w=500",
-        desc: "16GB RAM, 512GB SSD, display Liquid Retina."
+        //img: "https://images.unsplash.com/photo-1517336714460-457228377a7e?w=500",
+        img: "https://unsplash.com/photos/futuristic-server-room-lit-with-blue-lights-CuZ8VdwRpyk",
+        desc: "16TB RAM, 512TB SSD, display: Un led blu."
     },
     { 
         id: 4, 
