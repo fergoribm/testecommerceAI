@@ -1,0 +1,43 @@
+"Genera un'applicazione Node.js completa pronta per il deploy su IBM Cloud Code Engine. L'applicazione deve essere un sito di e-commerce per prodotti IT con le seguenti specifiche:
+
+        Architettura Tecnica:
+
+            Usa Express.js come framework e EJS come template engine.
+
+            Configura il server per ascoltare sulla porta process.env.PORT || 8080 (obbligatorio per Code Engine).
+
+            Implementa la gestione del carrello tramite express-session (stateless).
+
+        Contenuto e Dati:
+
+            Crea un catalogo hardcoded di almeno 5 oggetti IT (es. MacBook, Monitor 4K, Tastiera Meccanica).
+
+            Ogni prodotto deve avere: id, nome, prezzo, descrizione e un URL per l'immagine (usa link da Unsplash).
+
+        Funzionalità richieste:
+
+            Home Page: Una griglia di card (usa Bootstrap 5) che mostri i prodotti e un pulsante 'Aggiungi al carrello'.
+
+            Navbar: Deve includere il nome dello store e un contatore dinamico degli elementi nel carrello.
+
+            Checkout: Una pagina che elenchi i prodotti scelti, calcoli il totale e mostri un pulsante 'Conferma Ordine'.
+
+        File di Configurazione Cloud:
+
+            Fornisci il codice completo per server.js.
+
+            Fornisci i file views/index.ejs e views/checkout.ejs.
+
+            Includi un package.json con gli script di start corretti.
+
+            Includi un Dockerfile ottimizzato per immagini leggere (es. node:alpine).
+
+        Design: Layout moderno, responsive e pulito."
+
+Perché questo prompt funziona?
+
+    Targeting specifico: Menzionando "Code Engine", l'AI sa che non deve salvare file localmente (perché il file system è effimero) e deve usare variabili d'ambiente per la porta.
+
+    Dettagli UI: Specificando "Bootstrap 5", eviti di dover scrivere CSS personalizzato e ottieni un look professionale immediato.
+
+    Pronto all'uso: Chiedendo esplicitamente il Dockerfile e il package.json, elimini i passaggi manuali di configurazione dopo la generazione del codice.
